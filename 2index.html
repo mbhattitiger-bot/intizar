@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intezar... 14th Feb ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:italic,wght@400&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: 'Poppins', sans-serif; background: #0f0c29; color: white; }
+        
+        /* Night Sky Background */
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); }
+
+        .container { height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; color: #ff758f; margin-bottom: 10px; text-shadow: 0 0 20px rgba(255, 117, 143, 0.5); }
+        
+        .timer-label { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; color: #fccb90; margin-bottom: 10px; }
+        
+        .timer { font-size: 3rem; font-weight: bold; letter-spacing: 2px; margin: 20px 0; color: #fff; background: rgba(255,255,255,0.05); padding: 20px 40px; border-radius: 50px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.1); }
+        
+        .msg-box { max-width: 650px; font-family: 'Lora', serif; font-size: 1.5rem; line-height: 1.8; font-style: italic; color: #dcdde1; margin-top: 30px; animation: fadeIn 4s ease-in; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Elegant Floating Moon & Stars */
+        .floating { position: absolute; pointer-events: none; animation: floatUp linear infinite; opacity: 0.4; }
+        @keyframes floatUp { from { transform: translateY(110vh) rotate(0deg); } to { transform: translateY(-10vh) rotate(360deg); } }
+
+        #music-toggle { position: fixed; top: 25px; right: 25px; font-size: 28px; cursor: pointer; z-index: 100; }
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+    <div id="music-toggle" onclick="toggleMusic()">🎵</div>
+    <audio id="waitMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <h1>Bas Thora Sa Sabr...</h1>
+        <div class="timer-label">Aapki Salgirah Mein Baaki Hain:</div>
+        
+        <div class="timer" id="countdown">Calculating...</div>
+
+        <div class="msg-box">
+            "Suna hai intezar ka phal meetha hota hai, <br>
+            Magar aapki salgirah ka ye intezar... <br>
+            Ye toh ek alag hi sukoon hai. <br><br>
+            Har guzarta lamha mujhe us din ke kareeb le ja raha hai, <br>
+            Jab dunya ne ek bohat haseen tohfa paya tha. <br>
+            14 February ka intezar sirf mujhe nahi, <br>
+            Shayad waqt ko bhi hai..."
+        </div>
+    </div>
+
+    <script>
+        function toggleMusic() {
+            let m = document.getElementById('waitMusic');
+            if(m.paused) m.play(); else m.pause();
+        }
+
+        // Countdown Logic - Target: 14 Feb 2026
+        const targetDate = new Date("Feb 14, 2026 00:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "WAQT AA GAYA! ✨";
+            }
+        }, 1000);
+
+        function createFloater() {
+            const f = document.createElement('div');
+            f.className = 'floating';
+            const icons = ['✨', '🌙', '⭐', '💖'];
+            f.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            f.style.left = Math.random() * 100 + 'vw';
+            f.style.fontSize = Math.random() * 20 + 15 + 'px';
+            f.style.animationDuration = Math.random() * 5 + 7 + 's';
+            document.body.appendChild(f);
+            setTimeout(() => f.remove(), 9000);
+        }
+        setInterval(createFloater, 600);
+    </script>
+</body>
+</html>
