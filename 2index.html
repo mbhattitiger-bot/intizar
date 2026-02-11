@@ -3,96 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intezar... 14th Feb ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:italic,wght@400&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>Salgirah Mubarak Muhtrma! | Your Medical Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: 'Poppins', sans-serif; background: #0f0c29; color: white; }
+        :root { --p1: #ff4d6d; --p2: #7209b7; --p3: #4cc9f0; }
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: 'Poppins', sans-serif; background: #000; }
         
-        /* Night Sky Background */
-        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); }
+        .page {
+            position: absolute; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); text-align: center; color: white;
+            opacity: 0; transform: translateY(100%);
+        }
 
-        .container { height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        .active { opacity: 1; transform: translateY(0); }
 
-        h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; color: #ff758f; margin-bottom: 10px; text-shadow: 0 0 20px rgba(255, 117, 143, 0.5); }
+        /* Diverse Backgrounds */
+        #pg1 { background: radial-gradient(circle, #ff9a9e 0%, #fecfef 100%); }
+        #pg2 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        #pg3 { background: linear-gradient(to right, #00b09b, #96c93d); }
+        #pg4 { background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%); }
+        #pg5 { background: linear-gradient(to right, #fa709a 0%, #fee140 100%); }
+        #pg6 { background: #1a1a2e; }
+        #pg7 { background: #ff4d6d; }
+        #pg8 { background: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%); }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; margin: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); animation: bounce 2s infinite; }
+        p { font-size: 1.5rem; max-width: 80%; line-height: 1.4; font-weight: 300; }
         
-        .timer-label { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; color: #fccb90; margin-bottom: 10px; }
-        
-        .timer { font-size: 3rem; font-weight: bold; letter-spacing: 2px; margin: 20px 0; color: #fff; background: rgba(255,255,255,0.05); padding: 20px 40px; border-radius: 50px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.1); }
-        
-        .msg-box { max-width: 650px; font-family: 'Lora', serif; font-size: 1.5rem; line-height: 1.8; font-style: italic; color: #dcdde1; margin-top: 30px; animation: fadeIn 4s ease-in; }
+        .signature {
+            position: absolute; bottom: 30px; font-size: 1rem;
+            letter-spacing: 2px; opacity: 0.9; font-weight: 600;
+            background: rgba(255,255,255,0.2); padding: 5px 20px;
+            border-radius: 50px; backdrop-filter: blur(5px);
+        }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .btn {
+            margin-top: 30px; padding: 15px 40px; background: white; color: #ff4d6d;
+            border: none; border-radius: 50px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s;
+        }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
-        /* Elegant Floating Moon & Stars */
-        .floating { position: absolute; pointer-events: none; animation: floatUp linear infinite; opacity: 0.4; }
-        @keyframes floatUp { from { transform: translateY(110vh) rotate(0deg); } to { transform: translateY(-10vh) rotate(360deg); } }
+        /* Party Elements */
+        .balloon { position: absolute; bottom: -150px; width: 60px; height: 80px; border-radius: 50%; animation: rise 5s infinite ease-in; opacity: 0.8; }
+        .balloon:after { content: "▲"; position: absolute; bottom: -8px; left: 22px; color: inherit; font-size: 10px; }
 
-        #music-toggle { position: fixed; top: 25px; right: 25px; font-size: 28px; cursor: pointer; z-index: 100; }
+        @keyframes rise { 0% { bottom: -100px; transform: translateX(0); } 50% { transform: translateX(50px); } 100% { bottom: 110vh; transform: translateX(-50px); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        #music-btn { position: fixed; top: 20px; right: 20px; z-index: 1000; background: rgba(255,255,255,0.7); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 24px; }
     </style>
 </head>
 <body>
 
-    <div class="stars"></div>
-    <div id="music-toggle" onclick="toggleMusic()">🎵</div>
-    <audio id="waitMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+    <div id="music-btn" onclick="toggleMusic()">🎵</div>
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="container">
-        <h1>Bas Thora Sa Sabr...</h1>
-        <div class="timer-label">Aapki Salgirah Mein Baaki Hain:</div>
-        
-        <div class="timer" id="countdown">Calculating...</div>
-
-        <div class="msg-box">
-            "Suna hai intezar ka phal meetha hota hai, <br>
-            Magar aapki salgirah ka ye intezar... <br>
-            Ye toh ek alag hi sukoon hai. <br><br>
-            Har guzarta lamha mujhe us din ke kareeb le ja raha hai, <br>
-            Jab dunya ne ek bohat haseen tohfa paya tha. <br>
-            14 February ka intezar sirf mujhe nahi, <br>
-            Shayad waqt ko bhi hai..."
-        </div>
+    <div class="page active" id="pg1">
+        <h1>Assalam-o-Alaikum</h1>
+        <p>Aaj ki subha kuch zyada hi haseen hai... ✨</p>
+        <button class="btn" onclick="go(2)">Kyun? Check Karein</button>
+        <div class="signature">Best Wishes: Your Medical Store</div>
     </div>
 
-    <script>
-        function toggleMusic() {
-            let m = document.getElementById('waitMusic');
-            if(m.paused) m.play(); else m.pause();
-        }
+    <div class="page" id="pg2">
+        <h1>Salgirah Mubarak</h1>
+        <p style="font-size: 3rem; font-weight: bold;">Muhtrma!</p>
+        <p>Aap jaisa koi nahi is poori duniya mein.</p>
+        <button class="btn" onclick="go(3)">Aage Chalein 🎈</button>
+        <div class="signature">With Love: Your Medical Store</div>
+    </div>
 
-        // Countdown Logic - Target: 14 Feb 2026
-        const targetDate = new Date("Feb 14, 2026 00:00:00").getTime();
+    <div class="page" id="pg3">
+        <h1>14 February ✨</h1>
+        <p>Log isse Valentine kehte hain, lekin humare liye ye "Muhtrma Day" hai! 🎉</p>
+        <button class="btn" onclick="go(4)">Next Surprise</button>
+        <div class="signature">Always Praying: Your Medical Store</div>
+    </div>
 
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+    <div class="page" id="pg4">
+        <h1>Meri Dua Hai...</h1>
+        <p>Ke aap hamesha aise hi muskurati rahein jaise phool khilte hain. 🌸</p>
+        <button class="btn" onclick="go(5)">Keep Going</button>
+        <div class="signature">From: Your Medical Store</div>
+    </div>
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "WAQT AA GAYA! ✨";
-            }
-        }, 1000);
-
-        function createFloater() {
-            const f = document.createElement('div');
-            f.className = 'floating';
-            const icons = ['✨', '🌙', '⭐', '💖'];
-            f.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-            f.style.left = Math.random() * 100 + 'vw';
-            f.style.fontSize = Math.random() * 20 + 15 + 'px';
-            f.style.animationDuration = Math.random() * 5 + 7 + 's';
-            document.body.appendChild(f);
-            setTimeout(() => f.remove(), 9000);
-        }
-        setInterval(createFloater, 600);
-    </script>
-</body>
-</html>
+    <div class="page" id="pg5">
+        <h1>Kamyabi...</h1>
+        <p>Allah aapko har
